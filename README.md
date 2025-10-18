@@ -35,7 +35,6 @@ The project includes a Flask CLI command to initialize the database. This will c
 If your app package is `flaskr` (recommended):
 
 ```powershell
-$env:FLASK_APP='flaskr'
 flask --app flaskr init-db
 ```
 
@@ -47,23 +46,13 @@ Note: `instance/flaskr.sqlite` is environment-specific and should NOT be committ
 Using the `flaskr` package:
 
 ```powershell
-$env:FLASK_APP='flaskr'
 flask --app flaskr run --debug
 ```
 
 
 Open http://127.0.0.1:5000 in your browser.
 
-## Project checklist (assignment)
 
-- [ ] 5+ pages/templates using a base layout
-- [ ] SQLite database with at least 2 tables and a foreign key (see `flaskr/schema.sql`)
-- [ ] Register/login system implemented (see `flaskr/auth.py`)
-- [ ] At least one HTML form with GET and POST handling
-- [ ] Bootstrap styling and a modal used in templates
-- [ ] `main.py` contains header comments with name, class, and project title
-- [ ] `requirements.txt` present and valid
-- [ ] Minimum 5 commits on `main` branch
 
 ## Notes
 
@@ -75,9 +64,6 @@ git rm --cached instance/flaskr.sqlite
 git commit -m "Untrack local SQLite DB"
 ```
 
-## Contact / Help
-
-If you get stuck, please email your instructor or open an issue in this repo.
 
 ---
 
