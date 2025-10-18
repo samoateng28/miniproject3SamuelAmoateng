@@ -5,3 +5,56 @@ flask --app flaskr run --debug
 
 initialize db: 
 flask --app flaskr init-db
+
+
+# Mini Project 3: Flask Web Application
+
+This project requires you to develop a small web application using **Flask**. The goal is to apply your skills in web development, database management, and version control.
+
+## 🎯 Submission Requirements
+
+* **Submit a link to your GitHub project.** Do **not** submit your project files here.
+* I will be checking out the **main** branch of your project.
+* There should be a minimum of **5 commits** on your project. Commit often!
+* **If you get stuck, please email me!**
+
+---
+
+## 💻 Technical Requirements (70/100 Points)
+
+| Points | Category | Requirement |
+| :---: | :---: | :--- |
+| **10** | **Structure** | Setup a proper **folder structure** (use the tutorial as an example). |
+| **20** | **Templates** | Have a minimum of **5 pages**, using a proper **template structure** (e.g., using a base template). |
+| **10** | **Database** | Setup a **SQLite database** with a minimum of **two tables**, linked with a **foreign key**. |
+| **10** | **Forms** | Have at least one page that utilizes an **HTML form** and has the proper **GET and POST routes** setup. |
+| **10** | **Authentication**| Setup some sort of **register and login system** (you can use the tutorial as an example). |
+| **10** | **Styling** | Use **Bootstrap** in your web templates. You must at least make use of a **modal**. |
+
+---
+
+## 📝 Documentation & Code Requirements (30/100 Points)
+
+| Points | Requirement |
+| :---: | :--- |
+| **5** | **Initial Comments:** Include your name, class, and project title at the top of your main `.py` file. |
+| **5** | **Proper Imports:** Ensure all packages are imported correctly. |
+| **5** | **Dependencies File:** Include a **`requirements.txt`** file containing all packages installed. You can create this with the output of `pip freeze` at the terminal. |
+| **10** | **README.md:** Include a thorough **`README.md`** file (using the **GitHub flavor of Markdown**) that explains: |
+| | | 1. What your project is. |
+| | | 2. How to install the pip requirements. |
+| | | 3. How to **initialize the database**. |
+| | | 4. How to **run the development server** to execute the program. |
+
+***
+
+### Summary of Key Deliverables:
+
+1.  Flask application with 5+ pages.
+2.  SQLite database with 2 foreign-key linked tables.
+3.  Register/Login system.
+4.  Bootstrap styling, including a modal.
+5.  `main.py` file with proper initial comments.
+6.  `requirements.txt` file.
+7.  `README.md` file with detailed setup instructions.
+8.  Minimum 5 Git commits.
