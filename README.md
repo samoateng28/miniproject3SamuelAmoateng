@@ -1,7 +1,7 @@
 ### INF601 - Advanced Programming in Python
 ### Samuel Amoateng
 
-# Mini Project 3 — Flask Web Application
+# Mini Project 3 — Flask Blog Application (Flaskr)
 
 Simple Flask web app built for the Mini Project 3 assignment. The app includes user authentication (register/login), a SQLite database with related tables, multiple pages using Jinja2 templates, and Bootstrap styling (includes a modal).
 
