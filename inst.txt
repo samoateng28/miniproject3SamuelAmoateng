@@ -1,0 +1,7 @@
+flask --app main run 
+
+run flaskr: 
+flask --app flaskr run --debug
+
+initialize db: 
+flask --app flaskr init-db
