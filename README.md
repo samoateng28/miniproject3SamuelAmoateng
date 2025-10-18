@@ -16,47 +16,36 @@ This repository contains a small Flask application demonstrating:
 - A minimal set of tests (if present in `tests/`)
 
 ## Database schema (excerpt)
-The database includes a `user` table plus related tables demonstrating foreign keys. Example excerpt (full schema in `flaskr/schema.sql`):
+The database includes a `user` table and a `post` table linked by a foreign key. Example excerpt (full schema in `flaskr/schema.sql`):
 
 ```sql
 CREATE TABLE user (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	username TEXT UNIQUE NOT NULL,
-	password TEXT NOT NULL
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
 );
 
-CREATE TABLE project (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	title TEXT NOT NULL,
-	description TEXT,
-	created_by INTEGER NOT NULL,
-	FOREIGN KEY (created_by) REFERENCES user (id)
-);
-
-CREATE TABLE task (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	project_id INTEGER NOT NULL,
-	title TEXT NOT NULL,
-	due_date TEXT,
-	done INTEGER NOT NULL DEFAULT 0,
-	created_by INTEGER NOT NULL,
-	FOREIGN KEY (project_id) REFERENCES project (id),
-	FOREIGN KEY (created_by) REFERENCES user (id)
+CREATE TABLE post (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
 );
 ```
 
 ## Pages / routes (5+ pages)
 This project follows the tutorial structure and includes the following pages (templates):
 
-- `/` — `index.html` (list projects)
-- `/project/<id>` — `project_detail.html` (project tasks + quick add form/modal)
-- `/project/create` — `create_project.html` (create project form)
+- `/` — `index.html` (list posts)
+- `/create` — `create.html` (create post form)
+- `/<int:id>` — `post_detail.html` (view post details)
 - `/auth/register` — `auth/register.html` (registration)
 - `/auth/login` — `auth/login.html` (login)
-- Optional: `/profile` — `profile.html` (user profile)
 
 ## Bootstrap & modal
-Bootstrap v4 is included in `flaskr/templates/base.html`. A Bootstrap modal is used on the project detail page as a "Quick Add Task" form (or as a delete confirmation). See the modal markup in `base.html` or `project_detail.html`.
+Bootstrap v4 is included in `flaskr/templates/base.html`. A Bootstrap modal is used in the navigation bar as an "Info" modal. See the modal markup in `base.html`.
 
 ## Install dependencies (Windows PowerShell)
 
@@ -82,15 +71,15 @@ Open http://127.0.0.1:5000 in your browser.
 
 ## Assignment requirements checklist
 
-- [ ] Header comments with name, class, and project at top of `main.py` (required)
+- [x] Header comments with name, class, and project at top of `main.py` (required)
 - [x] `requirements.txt` present
 - [x] `README.md` present with install/init/run instructions
 - [x] Register/login system implemented
 - [x] Bootstrap + modal used in templates
 - [x] SQLite DB with ≥2 tables and a foreign key (see `flaskr/schema.sql`)
-- [ ] 5+ pages/templates using a base layout
-- [ ] At least one page with a GET and POST form handler
-- [ ] Minimum 5 commits on `main` branch
+- [x] 5+ pages/templates using a base layout
+- [x] At least one page with a GET and POST form handler
+- [x] Minimum 5 commits on `main` branch
 
 ## Verify commit count
 To check commits on the main branch:
