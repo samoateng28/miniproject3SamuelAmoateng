@@ -68,27 +68,3 @@ flask --app flaskr run --debug
 ```
 
 Open http://127.0.0.1:5000 in your browser.
-
-## Assignment requirements checklist
-
-- [x] Header comments with name, class, and project at top of `__init__.py` 
-- [x] `requirements.txt` present
-- [x] `README.md` present with install/init/run instructions
-- [x] Register/login system implemented
-- [x] Bootstrap + modal used in templates
-- [x] SQLite DB with ≥2 tables and a foreign key (see `flaskr/schema.sql`)
-- [x] 5+ pages/templates using a base layout
-- [x] At least one page with a GET and POST form handler
-- [x] Minimum 5 commits on `main` branch
-
-## Verify commit count
-To check commits on the main branch:
-
-```powershell
-git rev-list --count main
-```
-
-
----
-
-Project created by: Samuel Amoateng
