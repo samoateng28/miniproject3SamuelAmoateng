@@ -15,10 +15,48 @@ This repository contains a small Flask application demonstrating:
 - HTML forms with GET/POST handling
 - A minimal set of tests (if present in `tests/`)
 
-## Requirements
+## Database schema (excerpt)
+The database includes a `user` table plus related tables demonstrating foreign keys. Example excerpt (full schema in `flaskr/schema.sql`):
 
-- Python 3.10+ recommended
-- Virtual environment recommended
+```sql
+CREATE TABLE user (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	username TEXT UNIQUE NOT NULL,
+	password TEXT NOT NULL
+);
+
+CREATE TABLE project (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title TEXT NOT NULL,
+	description TEXT,
+	created_by INTEGER NOT NULL,
+	FOREIGN KEY (created_by) REFERENCES user (id)
+);
+
+CREATE TABLE task (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	project_id INTEGER NOT NULL,
+	title TEXT NOT NULL,
+	due_date TEXT,
+	done INTEGER NOT NULL DEFAULT 0,
+	created_by INTEGER NOT NULL,
+	FOREIGN KEY (project_id) REFERENCES project (id),
+	FOREIGN KEY (created_by) REFERENCES user (id)
+);
+```
+
+## Pages / routes (5+ pages)
+This project follows the tutorial structure and includes the following pages (templates):
+
+- `/` — `index.html` (list projects)
+- `/project/<id>` — `project_detail.html` (project tasks + quick add form/modal)
+- `/project/create` — `create_project.html` (create project form)
+- `/auth/register` — `auth/register.html` (registration)
+- `/auth/login` — `auth/login.html` (login)
+- Optional: `/profile` — `profile.html` (user profile)
+
+## Bootstrap & modal
+Bootstrap v4 is included in `flaskr/templates/base.html`. A Bootstrap modal is used on the project detail page as a "Quick Add Task" form (or as a delete confirmation). See the modal markup in `base.html` or `project_detail.html`.
 
 ## Install dependencies (Windows PowerShell)
 
@@ -30,38 +68,35 @@ pip install -r requirements.txt
 
 ## Initialize the database
 
-The project includes a Flask CLI command to initialize the database. This will create the `instance/flaskr.sqlite` database using `flaskr/schema.sql`.
-
-If your app package is `flaskr` (recommended):
-
 ```powershell
 flask --app flaskr init-db
 ```
 
-
-Note: `instance/flaskr.sqlite` is environment-specific and should NOT be committed. `.gitignore` excludes `instance/`.
-
 ## Run the development server
-
-Using the `flaskr` package:
 
 ```powershell
 flask --app flaskr run --debug
 ```
 
-
 Open http://127.0.0.1:5000 in your browser.
 
+## Assignment requirements checklist
 
+- [ ] Header comments with name, class, and project at top of `main.py` (required)
+- [x] `requirements.txt` present
+- [x] `README.md` present with install/init/run instructions
+- [x] Register/login system implemented
+- [x] Bootstrap + modal used in templates
+- [x] SQLite DB with ≥2 tables and a foreign key (see `flaskr/schema.sql`)
+- [ ] 5+ pages/templates using a base layout
+- [ ] At least one page with a GET and POST form handler
+- [ ] Minimum 5 commits on `main` branch
 
-## Notes
-
-- Keep secrets out of the repo (do not commit `instance/config.py` with real `SECRET_KEY` or the `instance/` DB).
-- If `instance/flaskr.sqlite` was previously committed, untrack it with:
+## Verify commit count
+To check commits on the main branch:
 
 ```powershell
-git rm --cached instance/flaskr.sqlite
-git commit -m "Untrack local SQLite DB"
+git rev-list --count main
 ```
 
 
