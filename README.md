@@ -71,7 +71,7 @@ Open http://127.0.0.1:5000 in your browser.
 
 ## Assignment requirements checklist
 
-- [x] Header comments with name, class, and project at top of `main.py` (required)
+- [x] Header comments with name, class, and project at top of `__init__.py` 
 - [x] `requirements.txt` present
 - [x] `README.md` present with install/init/run instructions
 - [x] Register/login system implemented
