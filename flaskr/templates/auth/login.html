@@ -1,15 +1,40 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
+  <h1 class="h3">{% block title %}Log In{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
+  <form method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input class="form-control" name="username" id="username" required>
+      <div class="invalid-feedback">Please enter a username.</div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" id="password" required>
+      <div class="invalid-feedback">Please enter a password.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Log In</button>
   </form>
+
+  <script>
+    // Simple client-side bootstrap validation
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
 {% endblock %}
