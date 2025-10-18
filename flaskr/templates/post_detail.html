@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1 class="h3">{{ post['title'] }}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="mb-3 text-muted">By {{ post['username'] }} — {{ post['created'] }}</div>
+  <div class="mb-3">{{ post['body'] }}</div>
+  <a class="btn btn-secondary" href="{{ url_for('index') }}">Back to Feed</a>
+{% endblock %}

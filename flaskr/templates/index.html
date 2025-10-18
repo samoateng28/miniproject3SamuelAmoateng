@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1 class="h3">Feed</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="mb-3">
+    {% if g.user %}
+      <a class="btn btn-success" href="{{ url_for('blog.create') }}">Create Post</a>
+    {% else %}
+      <a class="btn btn-primary" href="{{ url_for('auth.login') }}">Log in to create posts</a>
+    {% endif %}
+  </div>
+
+  {% for post in posts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{{ url_for('blog.post_detail', id=post['id']) }}">{{ post['title'] }}</a></h5>
+        <h6 class="card-subtitle mb-2 text-muted">By {{ post['username'] }} — {{ post['created'] }}</h6>
+        <p class="card-text">{{ post['body'][:200] }}{% if post['body']|length > 200 %}...{% endif %}</p>
+      </div>
+    </div>
+  {% else %}
+    <p>No posts yet.</p>
+  {% endfor %}
+
+{% endblock %}

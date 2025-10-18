@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1 class="h3">Create Post</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" name="title" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea id="body" name="body" class="form-control" rows="6"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Publish</button>
+  </form>
+{% endblock %}
